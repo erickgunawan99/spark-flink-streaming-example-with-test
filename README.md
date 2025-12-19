@@ -14,7 +14,7 @@ Flink: Flink (Java) DataStream API reads from Kafka, applies logic, and sinks to
 
 Validation: Both engines feature dedicated test suites to validate business logic without requiring a live Kafka cluster.
 
--  Flink Testing: Integrated MiniCluster
+1. Flink Testing: Integrated MiniCluster
   - Flink test (located in /flink/src/test) utilize the MiniClusterWithClientResource. This allows you to run a real Flink execution environment within a JUnit lifecycle.
 
   - What is it testing: The filtering and event-time aggregation function
@@ -24,7 +24,7 @@ Validation: Both engines feature dedicated test suites to validate business logi
  - Data Validation: Instead of complex external sinks, we use aggregated.executeAndCollect(). This stream-to-iterator pattern allows the test to "wait" for the stream to       finish and collect results into a standard Java List for assertions.
  - Time Control: By using WatermarkStrategy and TumblingEventTimeWindows, the test proves that the aggregation logic correctly handles event-time boundaries.
 
--  Spark Testing: Fast Schema Validation with Chispa
+2. Spark Testing: Fast Schema Validation with Chispa
   - Spark test (located in /spark/spark_test) use Chispa, the industry standard for PySpark unit testing.
 
   - What is it testing: The filtering and event-time aggregation function
